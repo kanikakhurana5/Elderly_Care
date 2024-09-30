@@ -1,0 +1,30 @@
+CREATE DATABASE elderly_care;
+USE elderly_care;
+
+
+CREATE TABLE caregivers (
+    caregiver_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    country VARCHAR(100) DEFAULT 'India',
+    latitude DECIMAL(10, 8),  -- For geolocation
+    longitude DECIMAL(11, 8), -- For geolocation
+    experience INT,  -- Years of experience
+    specialty VARCHAR(255),  -- Specialty like elderly care, nursing, etc.
+    rating DECIMAL(3, 2),  -- Rating out of 5, with 2 decimal places
+    reviews TEXT,  -- User reviews in a single field
+    availability VARCHAR(100),  -- Available times/days
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO caregivers (name, email, phone, address, city, state, latitude, longitude, experience, specialty, rating, reviews, availability)
+VALUES
+('Ravi Kumar', 'ravi.kumar@gmail.com', '9876543210', '123 MG Road', 'Bangalore', 'Karnataka', 12.9716, 77.5946, 5, 'Elderly Care', 4.5, 'Very caring and punctual.', 'Mon-Fri, 9 AM - 6 PM'),
+('Anita Sharma', 'anita.sharma@gmail.com', '9812345678', '45 Street 7', 'Mumbai', 'Maharashtra', 19.0760, 72.8777, 3, 'Nursing', 4.8, 'Professional and reliable.', 'Tue-Sat, 10 AM - 5 PM'),
+('Deepak Verma', 'deepak.verma@gmail.com', '9123456789', '12 Main Street', 'Delhi', 'Delhi', 28.7041, 77.1025, 7, 'Physiotherapy', 4.2, 'Excellent service.', 'Mon-Fri, 8 AM - 4 PM'),
+('Sita Menon', 'sita.menon@gmail.com', '9876543211', '78 Brigade Road', 'Chennai', 'Tamil Nadu', 13.0827, 80.2707, 4, 'Home Nursing', 4.7, 'Caring and compassionate.', 'Mon-Sun, 10 AM - 7 PM');
