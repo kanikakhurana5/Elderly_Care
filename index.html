@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caregiver Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Find Your Ideal Caregiver</h1>
+            <button id="locateMe" class="btn-locate">Locate Me</button>
+            <div id="filterOptions" class="filter-options">
+                
+
+
+                <label for="experience">Experience (years):</label>
+
+                <select id="experience">
+                    <option value="any">Any</option>
+                    <option value="1">1+</option>
+                    <option value="3">3+</option>
+                    <option value="5">5+</option>
+                </select>
+                
+
+                <label for="rating">Rating:</label>
+
+                <select id="rating">
+                    <option value="any">Any</option>
+                    <option value="1">1+</option>
+                    <option value="3">3+</option>
+                    <option value="5">5+</option>
+                </select>
+                
+
+                <label for="distance">Distance (km):</label>
+
+                <select id="distance">
+                    <option value="any">Any</option>
+                    <option value="5">5 km</option>
+                    <option value="10">10 km</option>
+                    <option value="20">20 km</option>
+                </select>
+                
+
+
+
+
+
+
+               
+                </select>
+                <label for="specialty">Specialty:</label>
+                <select id="specialty">
+                    <option value="any">Any</option>
+                    <option value="Nurse">Nurse</option>
+                    <option value="Physiotherapist">Physiotherapist</option>
+                    <option value="Caregiver">Caregiver</option>
+                </select>
+               
+
+
+                <button id="applyFilters">Apply Filters</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="map-section">
+                <div id="map"></div>
+            </div>
+            <div class="list-section">
+                <h2>Available Caregivers</h2>
+
+                
+                <div id="caregiverList" class="caregiver-list">
+                    <!-- Caregivers will be listed here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Booking Modal -->
+<div id="bookingModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Book Caregiver</h2>
+        <div id="caregiverDetails"></div>
+        <button id="confirmBooking">Confirm Booking</button>
+    </div>
+</div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
