@@ -45,7 +45,7 @@
                         </div>
                         <div class="flip-card-back">
                             <h3>Reminder Details</h3>
-                            <p>Set and manage reminders for medications, meals and hydration!</p>
+                            <p>Set and manage reminders for medications, meals, and hydration!</p>
                         </div>
                     </div>
                     <a href="#reminders" class="bookmark-button">Manage your reminders</a>
@@ -57,6 +57,7 @@
                 <form id="reminder-form">
                     <input type="text" id="reminder-type" placeholder="Type" required class="input-field">
                     <input type="time" id="reminder-time" required class="input-field">
+                    <input type="date" id="reminder-date" required class="input-field">
                     <input type="text" id="reminder-description" placeholder="Description" required class="input-field">
                     <button type="submit" class="button add-reminder-button">Add Reminder</button>
                 </form>
@@ -67,33 +68,10 @@
                     </label>
                 </div>
 
-                
                 <div class="reminder-list"></div>
                 <button onclick="bulkDelete()" class="button" style="margin-top: 20px;">Delete Selected</button>
             </div>
             <br>
-            <div class="medication-section">
-                <h2>Medications</h2>
-                <form id="medication-form">
-                    <input type="text" id="medication-name" placeholder="Medication Name" required class="input-field">
-                    <input type="date" id="medication-date" required class="input-field">
-                    <input type="time" id="medication-time" required class="input-field">
-                    <button type="submit" class="button add-medication-button">Add Medication</button>
-                </form>
-                <div class="medication-list"></div>
-            </div>
-
-<br><br>
-
-            <div class="appointment-section">
-                <h2>Appointments</h2>
-                <form id="appointment-form">
-                    <input type="text" id="appointment-description" placeholder="Appointment" required class="input-field">
-                    <input type="date" id="appointment-date" required class="input-field">
-                    <button type="submit" class="button add-appointment-button">Add Appointment</button>
-                </form>
-                <div class="appointment-list"></div>
-            </div>
 
             <div class="calendar-section">
                 <h2>Your Calendar</h2>
