@@ -26,21 +26,28 @@ document.getElementById('nextMonth').addEventListener('click', () => {
 let reminders = [];
 
 // Handle the reminder form submission
-document.getElementById('reminder-form').addEventListener('submit', function (e) {
+// Handle the reminder form submission
+document.getElementById('reminder-form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const reminderType = document.getElementById('reminder-type').value;
-    const reminderDate = document.getElementById('reminder-date').value; // Added date field
+    const reminderDate = document.getElementById('reminder-date').value; 
     const reminderTime = document.getElementById('reminder-time').value;
     const reminderDescription = document.getElementById('reminder-description').value;
+    const smsToNumber = document.getElementById('sms-to').value; // Get phone number from input
+
+    // Input validation
+    if (!smsToNumber || !reminderType || !reminderDate || !reminderTime || !reminderDescription) {
+        alert('Please fill out all fields.');
+        return; // Exit if validation fails
+    }
 
     // Create a new reminder card
     const reminderList = document.querySelector('.reminder-list');
-    const newReminderCard = document.createElement('div');
-    newReminderCard.classList.add('reminder-card');
-
     const reminderId = Date.now(); // Unique ID for the reminder
 
+    const newReminderCard = document.createElement('div');
+    newReminderCard.classList.add('reminder-card');
     newReminderCard.innerHTML = `
         <span class="status-indicator" onclick="toggleStatus(this)">❌</span>
         <input type="checkbox" class="reminder-checkbox" data-id="${reminderId}" />
@@ -50,9 +57,33 @@ document.getElementById('reminder-form').addEventListener('submit', function (e)
 
     reminderList.appendChild(newReminderCard);
     reminders.push({ id: reminderId, date: reminderDate }); // Store reminder
+
+    // Send SMS notification
+    try {
+        const response = await fetch('/send-sms', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                to: smsToNumber,
+                message: `Reminder: ${reminderType} on ${reminderDate} at ${reminderTime}: ${reminderDescription}`,
+            }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Failed to send SMS');
+        
+        alert('SMS sent successfully!'); // Success feedback
+    } catch (error) {
+        console.error('Error sending SMS:', error);
+        alert('Failed to send SMS. Please check the phone number.');
+    }
+
     updateCalendar(reminderDate);
     this.reset(); // Reset the form
 });
+
 
 // Function to render the calendar
 function renderCalendar() {
