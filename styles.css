@@ -1,0 +1,215 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f7;
+    color: #343a40;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-locate {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-locate:hover {
+    background-color: #218838;
+}
+
+/* Filter Options Styles */
+.filter-options {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-options label {
+    margin: 0 10px;
+}
+
+.filter-options select {
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+#applyFilters {
+    background-color: #0f4fc7ad;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#applyFilters:hover {
+    background-color: #04478f;
+}
+
+/* Content Styles */
+.content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.map-section {
+    flex: 1;
+    height: 600px;
+    margin-right: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* List Section Styles */
+.list-section {
+    flex: 0.35;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.list-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+/* Caregiver Item Styles */
+.caregiver-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.caregiver-item:hover {
+    transform: scale(1.02);
+    background-color: #e9ecef;
+}
+
+.caregiver-item h4 {
+    margin: 0;
+    color: #007bff;
+}
+
+.caregiver-item p {
+    margin: 5px 0;
+    color: #6c757d;
+}
+
+/* Button Styles */
+.book-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.book-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Emoji Pin Styles */
+.emoji-pin {
+    font-size: 20px; /* Adjust size as needed */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .map-section {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .list-section {
+        width: 100%;
+    }
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
