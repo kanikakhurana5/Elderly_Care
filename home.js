@@ -137,5 +137,22 @@ function deleteReminder(button) {
     renderCalendar(); // Re-render the calendar after deletion
 }
 
+// Function to delete selected reminders
+function bulkDelete() {
+    const selectedCheckboxes = document.querySelectorAll('.reminder-checkbox:checked');
+    selectedCheckboxes.forEach(checkbox => {
+        const reminderCard = checkbox.closest('.reminder-card');
+        const reminderId = checkbox.dataset.id;
+
+        // Remove the reminder from the reminders array
+        reminders = reminders.filter(event => event.id !== Number(reminderId));
+
+        // Remove the reminder card from the DOM
+        reminderCard.remove();
+    });
+
+    renderCalendar(); // Re-render the calendar after deletion
+}
+
 // Initial render of the calendar
 renderCalendar();
