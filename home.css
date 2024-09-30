@@ -330,3 +330,25 @@ img {
     80% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+.calendar {
+    width: 100%;
+    height: auto; /* Allow height to adjust based on content */
+    border: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
+    grid-auto-rows: 100px; /* Set a height for each row */
+}
+
+.calendar div {
+    border: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em; /* Slightly increase font size */
+}
+
+.calendar .highlight-reminder {
+    background-color: #d1e7dd; /* Light green for reminders */
+}
