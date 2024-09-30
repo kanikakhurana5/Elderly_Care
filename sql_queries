@@ -1,0 +1,14 @@
+create database elderly_care;
+use elderly_care;
+
+CREATE TABLE reminders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL, -- Assuming you want to associate reminders with users
+    type VARCHAR(100) NOT NULL, -- Type of reminder (e.g., meeting, birthday)
+    date DATE NOT NULL, -- The date of the reminder
+    time TIME NOT NULL, -- The time of the reminder
+    description TEXT NOT NULL, -- Description of the reminder
+    sms_to VARCHAR(15) NOT NULL, -- Phone number to send SMS to
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- When the reminder was created
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- When the reminder was last updated
+);
