@@ -41,21 +41,11 @@ document.getElementById('reminder-form').addEventListener('submit', async functi
         return; // Exit if validation fails
     }
 
-    // Create a new reminder card
-    const reminderList = document.querySelector('.reminder-list');
-    const reminderId = Date.now(); // Unique ID for the reminder
+    // Create a unique ID for the reminder
+    const reminderId = Date.now();
 
-    const newReminderCard = document.createElement('div');
-    newReminderCard.classList.add('reminder-card');
-    newReminderCard.innerHTML = `
-        <span class="status-indicator" onclick="toggleStatus(this)">❌</span>
-        <input type="checkbox" class="reminder-checkbox" data-id="${reminderId}" />
-        <span>${reminderType} on ${reminderDate} at ${reminderTime}: ${reminderDescription}</span>
-        <button onclick="deleteReminder(this)">Delete</button>
-    `;
-
-    reminderList.appendChild(newReminderCard);
-    reminders.push({ id: reminderId, date: reminderDate, type: reminderType, time: reminderTime, description: reminderDescription }); // Store reminder
+    // Store the reminder in the reminders array
+    reminders.push({ id: reminderId, date: reminderDate, type: reminderType, time: reminderTime, description: reminderDescription });
 
     // Send SMS notification
     try {
@@ -70,8 +60,10 @@ document.getElementById('reminder-form').addEventListener('submit', async functi
             }),
         });
 
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || 'Failed to send SMS');
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.error || 'Failed to send SMS');
+        }
         
         alert('SMS sent successfully!'); // Success feedback
     } catch (error) {
@@ -79,6 +71,7 @@ document.getElementById('reminder-form').addEventListener('submit', async functi
         alert('Failed to send SMS. Please check the phone number.');
     }
 
+    // Update the calendar to highlight the added reminder date
     updateCalendar(reminderDate);
     this.reset(); // Reset the form
 });
@@ -138,8 +131,10 @@ function showReminderDetails(dateStr) {
         document.body.appendChild(detailsCard);
 
         // Close card when clicking outside
-        document.addEventListener('click', () => {
-            detailsCard.style.display = 'none'; // Hide card
+        document.addEventListener('click', (event) => {
+            if (event.target !== detailsCard && !detailsCard.contains(event.target)) {
+                detailsCard.style.display = 'none'; // Hide card
+            }
         });
     }
 
@@ -176,19 +171,23 @@ function updateCalendar(dateStr) {
 }
 
 // Function to toggle the completion status of a reminder
-function toggleStatus(indicator) {
-    const reminderCard = indicator.closest('.reminder-card');
+function toggleStatus(indicator, reminderId) {
+    const reminder = reminders.find(r => r.id === reminderId);
+    
+    // Toggle the completed status
+    reminder.completed = !reminder.completed;
 
-    if (indicator.classList.contains('completed')) {
-        indicator.classList.remove('completed');
-        indicator.innerHTML = '❌'; // Mark as not completed
-        reminderCard.style.backgroundColor = ''; // Reset background color
-    } else {
-        indicator.classList.add('completed');
+    // Update the UI based on completion status
+    if (reminder.completed) {
         indicator.innerHTML = '✅'; // Mark as completed
-        reminderCard.style.backgroundColor = ''; // Reset background color
+        indicator.closest('.reminder-card').style.backgroundColor = '#d4edda'; // Change background color for completed tasks
         showCelebration(); // Show celebration for completion
+    } else {
+        indicator.innerHTML = '❌'; // Mark as not completed
+        indicator.closest('.reminder-card').style.backgroundColor = ''; // Reset background color
     }
+
+    renderReminderList(); // Update the reminder list to reflect changes
 }
 
 // Function to show celebration pop-up
@@ -198,9 +197,12 @@ function showCelebration() {
     celebrationDiv.innerText = '🎉 Well done! Task completed! 🎉';
     document.body.appendChild(celebrationDiv);
 
+    // Optional: Add some animation to the celebration message
+    celebrationDiv.style.animation = 'fadeIn 1s, fadeOut 1s 2s'; // Example animation timing
+
     setTimeout(() => {
-        celebrationDiv.remove();
-    }, 3000); // Show for 3 seconds
+        celebrationDiv.remove(); // Remove celebration message after some time
+    }, 4000); // Show for 4 seconds total
 }
 
 // Function to delete a reminder
