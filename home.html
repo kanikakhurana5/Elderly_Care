@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareMate Dashboard</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>CareMate</h1>
+        <nav>
+            <ul>
+                <li><a href="#health-monitoring">Health Monitoring</a></li>
+                <li><a href="#caregiver-marketplace">Caregiver Marketplace</a></li>
+                <li><a href="#emergency-alerts">Emergency Alerts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <p class="welcome-message">We’re here to help you stay active, connected, and healthy.</p>
+            <div class="container">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="health-metric.gif" alt="Health Metrics" />
+                            <h3>Health Metrics</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Health Metrics Details</h3>
+                            <p>Monitor vital signs like heart rate, sleep patterns, and more!</p>
+                        </div>
+                    </div>
+                    <a href="#health-metrics" class="bookmark-button">Check your health metrics</a>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="reminders.gif" alt="Reminders" />
+                            <h3>Reminders</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Reminder Details</h3>
+                            <p>Set and manage reminders for medications, meals, and hydration!</p>
+                        </div>
+                    </div>
+                    <a href="#reminders" class="bookmark-button">Manage your reminders</a>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="reminder-section">
+                <h2>Reminders</h2>
+                <form id="reminder-form">
+                    <input type="text" id="reminder-type" placeholder="Type of Reminder" required>
+                    <input type="date" id="reminder-date" required>
+                    <input type="time" id="reminder-time" required>
+                    <input type="text" id="reminder-description" placeholder="Description" required>
+                    <input type="text" id="sms-to" placeholder="Phone Number" required>
+                    <button type="submit">Add Reminder</button>
+                </form>
+                
+                <div id="reminder-list"></div>
+                <button onclick="bulkDelete()" class="button" style="margin-top: 20px;">Delete Selected</button>
+            </div>
+            <br>
+
+            <div class="calendar-section">
+                <h2>Your Calendar</h2>
+                <div class="calendar-header">
+                    <button id="prevMonth" class="nav-button">❮</button>
+                    <h3 id="calendar-month-year"></h3>
+                    <button id="nextMonth" class="nav-button">❯</button>
+                </div>
+                <div id="calendar" class="calendar"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="home.js"></script>
+</body>
+</html>
