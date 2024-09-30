@@ -26,7 +26,6 @@ document.getElementById('nextMonth').addEventListener('click', () => {
 let reminders = [];
 
 // Handle the reminder form submission
-// Handle the reminder form submission
 document.getElementById('reminder-form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -56,7 +55,7 @@ document.getElementById('reminder-form').addEventListener('submit', async functi
     `;
 
     reminderList.appendChild(newReminderCard);
-    reminders.push({ id: reminderId, date: reminderDate }); // Store reminder
+    reminders.push({ id: reminderId, date: reminderDate, type: reminderType, time: reminderTime, description: reminderDescription }); // Store reminder
 
     // Send SMS notification
     try {
@@ -84,7 +83,6 @@ document.getElementById('reminder-form').addEventListener('submit', async functi
     this.reset(); // Reset the form
 });
 
-
 // Function to render the calendar
 function renderCalendar() {
     const calendar = document.getElementById('calendar');
@@ -106,16 +104,65 @@ function renderCalendar() {
     for (let day = 1; day <= totalDays; day++) {
         const dayDiv = document.createElement('div');
         dayDiv.textContent = day;
-        dayDiv.classList.add('calendar-day'); // Add a class for styling
+        dayDiv.classList.add('calendar-day');
 
         // Format the date for checking reminders
         const dateStr = `${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        
         if (hasEventOnDate(dateStr)) {
             dayDiv.classList.add('highlight-reminder');
+
+            // Add click event to show details
+            dayDiv.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent event bubbling
+                showReminderDetails(dateStr);
+            });
         }
 
         calendar.appendChild(dayDiv);
     }
+}
+
+// Function to show reminder details for a specific date
+function showReminderDetails(dateStr) {
+    // Find reminders for the selected date
+    const remindersForDate = reminders.filter(reminder => reminder.date === dateStr);
+
+    // Create or update the details card
+    let detailsCard = document.getElementById('details-card');
+    
+    if (!detailsCard) {
+        detailsCard = document.createElement('div');
+        detailsCard.id = 'details-card';
+        detailsCard.classList.add('details-card');
+        document.body.appendChild(detailsCard);
+
+        // Close card when clicking outside
+        document.addEventListener('click', () => {
+            detailsCard.style.display = 'none'; // Hide card
+        });
+    }
+
+    // Clear previous details
+    detailsCard.innerHTML = '';
+
+    if (remindersForDate.length > 0) {
+        remindersForDate.forEach(reminder => {
+            detailsCard.innerHTML += `
+                <div class="reminder-details">
+                    <strong>${reminder.type}</strong> <br />
+                    Date: ${reminder.date} <br />
+                    Time: ${reminder.time} <br />
+                    Description: ${reminder.description} <br />
+                </div>
+                <hr />
+            `;
+        });
+    } else {
+        detailsCard.innerHTML = `<p>No reminders for this date.</p>`;
+    }
+
+    detailsCard.style.display = 'block'; // Show the card
 }
 
 // Function to check if there are reminders on a specific date
