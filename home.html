@@ -56,11 +56,14 @@
                 <h2>Reminders</h2>
                 <form id="reminder-form">
                     <input type="text" id="reminder-type" placeholder="Type" required class="input-field">
+                    <input type="date" id="reminder-date" required class="input-field"> <!-- Added date field -->
                     <input type="time" id="reminder-time" required class="input-field">
-                    <input type="date" id="reminder-date" required class="input-field">
                     <input type="text" id="reminder-description" placeholder="Description" required class="input-field">
-                    <button type="submit" class="button add-reminder-button">Add Reminder</button>
+                    <label for="sms-to">Send SMS to:</label>
+                    <input type="tel" id="sms-to" required placeholder="e.g., +919752671290">
+                                        <button type="submit" class="button add-reminder-button">Add Reminder</button>
                 </form>
+                
             
                 <div class="alert-section">
                     <label>
