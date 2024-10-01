@@ -118,22 +118,7 @@ function renderCalendar() {
 }
 
 // Function to render the list of reminders below the input
-function renderReminderList() {
-    const reminderList = document.getElementById('reminder-list');
-    reminderList.innerHTML = ''; // Clear the list before rendering
 
-    reminders.forEach(reminder => {
-        const reminderCard = document.createElement('div');
-        reminderCard.classList.add('reminder-card');
-        reminderCard.innerHTML = `
-            <span class="status-indicator" onclick="toggleStatus(this, ${reminder.id})">❌</span>
-            <span>${reminder.type} on ${reminder.date} at ${reminder.time}: ${reminder.description}</span>
-            <button onclick="deleteReminder(this)">Delete</button>
-        `;
-
-        reminderList.appendChild(reminderCard);
-    });
-}
 
 // Function to show reminder details for a specific date
 function showReminderDetails(dateStr) {
@@ -190,24 +175,28 @@ function updateCalendar(dateStr) {
 }
 
 // Function to toggle the completion status of a reminder
+// Function to toggle the completion status of a reminder
 function toggleStatus(indicator, reminderId) {
     const reminder = reminders.find(r => r.id === reminderId);
     
-    // Toggle the completed status
-    reminder.completed = !reminder.completed;
+    if (reminder) {
+        // Toggle the completed status
+        reminder.completed = !reminder.completed;
 
-    // Update the UI based on completion status
-    if (reminder.completed) {
-        indicator.innerHTML = '✅'; // Mark as completed
-        indicator.closest('.reminder-card').style.backgroundColor = '#d4edda'; // Change background color for completed tasks
-        showCelebration(); // Show celebration for completion
-    } else {
-        indicator.innerHTML = '❌'; // Mark as not completed
-        indicator.closest('.reminder-card').style.backgroundColor = ''; // Reset background color
+        // Update the UI based on completion status
+        if (reminder.completed) {
+            indicator.innerHTML = '✅'; // Mark as completed
+            indicator.closest('.reminder-card').style.backgroundColor = '#d4edda'; // Change background color for completed tasks
+            showCelebration(); // Show celebration for completion
+        } else {
+            indicator.innerHTML = '❌'; // Mark as not completed
+            indicator.closest('.reminder-card').style.backgroundColor = ''; // Reset background color
+        }
     }
 
     renderReminderList(); // Update the reminder list to reflect changes
 }
+
 
 // Function to show celebration pop-up
 function showCelebration() {
@@ -223,18 +212,32 @@ function showCelebration() {
         celebrationDiv.remove(); // Remove celebration message after some time
     }, 4000); // Show for 4 seconds total
 }
+// Function to render the list of reminders below the input
+function renderReminderList() {
+    const reminderList = document.getElementById('reminder-list');
+    reminderList.innerHTML = ''; // Clear the list before rendering
+
+    reminders.forEach(reminder => {
+        const reminderCard = document.createElement('div');
+        reminderCard.classList.add('reminder-card');
+        reminderCard.setAttribute('data-id', reminder.id); // Set the reminder ID as a data attribute
+
+        reminderCard.innerHTML = `
+            <span class="status-indicator" onclick="toggleStatus(this, ${reminder.id})">❌</span>
+            <span>${reminder.type} on ${reminder.date} at ${reminder.time}: ${reminder.description}</span>
+            <button onclick="deleteReminder(${reminder.id})">Delete</button>
+        `;
+
+        reminderList.appendChild(reminderCard);
+    });
+}
 
 // Function to delete a reminder
-function deleteReminder(button) {
-    const reminderCard = button.closest('.reminder-card');
-    const reminderId = button.previousElementSibling.dataset.id;
-
-    // Remove the reminder from events
-    reminders = reminders.filter(event => event.id !== Number(reminderId));
-
-    reminderCard.remove();
+function deleteReminder(reminderId) {
+    reminders = reminders.filter(reminder => reminder.id !== reminderId);
     renderReminderList(); // Re-render the reminder list after deletion
 }
+
 
 // Function to delete selected reminders
 function bulkDelete() {
