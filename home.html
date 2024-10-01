@@ -12,26 +12,25 @@
         <h1>CareMate</h1>
         <nav>
             <ul>
-                <li><a href="#health-monitoring">Health Monitoring</a></li>
                 <li><a href="#caregiver-marketplace">Caregiver Marketplace</a></li>
-                <li><a href="#emergency-alerts">Emergency Alerts</a></li>
+                <li><a href="#emergency-alerts">Chatbot Assistance</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="dashboard">
-            <p class="welcome-message">We’re here to help you stay active, connected, and healthy.</p>
+            <p class="welcome-message">We’re here to help you stay active, connected and healthy.</p>
             <div class="container">
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="health-metric.gif" alt="Health Metrics" />
-                            <h3>Health Metrics</h3>
+                            <img src="reminders.gif.gif" alt="Health Metrics" />
+                            <h3>Reminders</h3>
                         </div>
                         <div class="flip-card-back">
-                            <h3>Health Metrics Details</h3>
-                            <p>Monitor vital signs like heart rate, sleep patterns, and more!</p>
+                            <h3>Reminder Details</h3>
+                            <p>Set and manage reminders for medications, meals and hydration</p>
                         </div>
                     </div>
                     <a href="#health-metrics" class="bookmark-button">Check your health metrics</a>
@@ -39,12 +38,26 @@
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="reminders.gif" alt="Reminders" />
-                            <h3>Reminders</h3>
+                            <img src="caregiver.gif" alt="Caregiver Marketplace" />
+                            <h3>Caregiver Marketplace</h3>
                         </div>
                         <div class="flip-card-back">
-                            <h3>Reminder Details</h3>
-                            <p>Set and manage reminders for medications, meals, and hydration!</p>
+                            <h3>Caregiver Marketplace Details</h3>
+                            <p>A Caregiver Marketplace links families with qualified caregivers for in-home support services</p>
+                        </div>
+                    </div>
+                    <a href="#reminders" class="bookmark-button">Manage your reminders</a>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="emergency.gif" alt="Chatbot Assistance" />
+                            <h3>Chatbot Assistance</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Chatbot Assistance Details</h3>
+                            <p>This feature provides quick insights into disease symptoms and health metrics to help manage your well-being efficiently.</p>
                         </div>
                     </div>
                     <a href="#reminders" class="bookmark-button">Manage your reminders</a>
@@ -63,12 +76,11 @@
                 </form>
                 
                 <div id="reminder-list"></div>
-                <button onclick="bulkDelete()" class="button" style="margin-top: 20px;">Delete Selected</button>
             </div>
             <br>
 
             <div class="calendar-section">
-                <h2>Your Calendar</h2>
+                <h2 style="text-align: center;">Your Calendar</h2>
                 <div class="calendar-header">
                     <button id="prevMonth" class="nav-button">❮</button>
                     <h3 id="calendar-month-year"></h3>
