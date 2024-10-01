@@ -2,11 +2,11 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff;
+    background-color: #d7e7ed;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #20374d;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -41,9 +41,9 @@ nav ul li a:hover {
 .welcome-message {
     text-align: center;         /* Center the text */
     font-size: 1.5em;          /* Increase font size */
-    color: #4CAF50;            /* Use a friendly color (adjust as needed) */
+    color: #4e4caf;            /* Use a friendly color (adjust as needed) */
     padding: 20px;             /* Add padding for spacing */
-    background-color: #f9f9f9; /* Light background for contrast */
+    background-color: #d7e7ed; /* Light background for contrast */
     border-radius: 5px;        /* Optional: Rounded corners */
     margin: 20px 0;            /* Margin for spacing from other elements */
 }
@@ -73,8 +73,8 @@ nav ul li a:hover {
 }
 
 .flip-card-front {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #99c4d5;
+    border: 1px solid #363e6a;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -83,7 +83,7 @@ nav ul li a:hover {
 }
 
 .flip-card-back {
-    background-color: #3b7f3e;
+    background-color: #20374d;
     color: white;
     transform: rotateY(180deg);
     padding: 20px;
@@ -111,7 +111,7 @@ img {
 
 .bookmark {
     text-decoration: none;            /* Remove underline */
-    background-color: #4CAF50;       /* Friendly color for the bookmark */
+    background-color: #4b509d;       /* Friendly color for the bookmark */
     color: white;                    /* Text color */
     padding: 10px 20px;              /* Padding for better button-like appearance */
     border-radius: 5px;              /* Rounded corners */
@@ -120,7 +120,7 @@ img {
 
 .bookmark-button {
     display: block;                       /* Button spans full width */
-    background-color: #4CAF50;           /* Green button background */
+    background-color: #4b509d;           /* Green button background */
     color: white;                        /* White text */
     text-align: center;                  /* Center text inside button */
     padding: 12px 24px;                  /* Increase padding for a better button feel */
@@ -132,7 +132,7 @@ img {
 }
 
 .bookmark-button:hover {
-    background-color: #45a049;            /* Darker shade on hover */
+    background-color: #4b509d;            /* Darker shade on hover */
     transform: scale(1.05);               /* Slightly enlarge on hover for effect */
 }
 
@@ -145,14 +145,14 @@ img {
     margin-left: 10px;
     padding: 5px 10px;
     border: none;
-    background-color: #4CAF50;
+    background-color: #354192;
     color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .edit-button:hover, .delete-button:hover {
-    background-color: #45a049;
+    background-color: #6672c7;
 }
 
 .celebration-popup {
@@ -178,7 +178,7 @@ img {
 .reminder-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
 }
 
 .instruction-boxes {
@@ -248,37 +248,15 @@ img {
     /*max-width: 800px; */
     margin: 0 auto; 
     /*padding: 20px;*/
-    border: 1px solid #ccc;
+    border: 1px solid #363e6a;
     border-radius: 5px;
-    background-color: #ccc;
+    background-color: #99c4d5;
 
     padding: 10px;
     margin-bottom: 30px;
 }
 
-.appointment-section {
-    text-align: center; /* Center-aligns text within the section */
-    /*max-width: 800px; 
-    margin: 0 auto; 
-    /*padding: 20px;*/
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ccc;
 
-    padding: 10px;
-    margin-bottom: 30px;
-}
-
-.medication-section{
-    text-align: center;
-    margin-top: 27px;
-   
-        border: 1px solid #f5c8c8;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 30px;
-        background-color: #ccc;
-    }
 
 
 .calendar {
@@ -334,14 +312,14 @@ img {
 .calendar {
     width: 100%;
     height: auto; /* Allow height to adjust based on content */
-    border: 1px solid #ccc;
+    border: 1px solid #161515;
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
     grid-auto-rows: 100px; /* Set a height for each row */
 }
 
 .calendar div {
-    border: 1px solid #eaeaea;
+    border: 1px solid #191717;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -350,7 +328,7 @@ img {
 }
 
 .calendar .highlight-reminder {
-    background-color: #d1e7dd; /* Light green for reminders */
+    background-color: #94d8b9; /* Light green for reminders */
 }
 
 .details-card {
