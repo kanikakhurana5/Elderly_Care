@@ -1,1 +1,34 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="health-form">
+            <h2>Enter Health Details</h2>
+            <form id="healthForm">
+                <label for="bp">Blood Pressure:</label>
+                <input type="text" id="bp" name="bp" required><br><br>
+
+                <label for="bloodSugar">Blood Sugar:</label>
+                <input type="text" id="bloodSugar" name="bloodSugar" required><br><br>
+
+                <label for="heartRate">Heart Rate:</label>
+                <input type="text" id="heartRate" name="heartRate" required><br><br>
+
+                <label for="symptoms">Symptoms:</label>
+                <textarea id="symptoms" name="symptoms" rows="3" required></textarea><br><br>
+
+                <button type="button" id="emergencyBtn">Send Emergency SMS</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
